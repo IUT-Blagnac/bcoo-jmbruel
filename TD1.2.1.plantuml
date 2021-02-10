@@ -1,3 +1,44 @@
 @startuml
-class Xorg
+
+hide circle
+hide empty methods
+hide empty attributes
+
+class E as "Etudiant" {
+  idNumeroEtudiant
+  nom
+  prenom
+  dateNaissance
+  }
+
+class C as "Cours" {
+  'nomEnseigant
+  'prenomEnseignant
+  titre
+  codeModule
+  }
+
+class Enseignant {
+  nom
+  prenom
+}
+
+C "*" -left- "1" Enseignant
+
+class Examens as "Examen" {
+  date
+  coefficient
+  'cours
+  }
+
+class Note {
+  valeur
+  }
+
+E "1..*" -- "0..*" C
+C "1" -- "?" Examens
+E "1..*" -- "0..*" Examens
+(E, Examens) . Note
+
+
 @enduml

@@ -1,0 +1,38 @@
+@startuml Ordinateurs portables
+
+'hide circle
+hide empty methods
+hide empty attributes
+
+class portable as "Portable"{
+ prixAchat
+ valeurActuelle
+}
+
+class Type {
+}
+
+'enum TypeClavier{
+'  azerty
+'  querty
+'}
+
+Azerty --|> Type
+
+Querty --|> Type
+
+class clavier as "Clavier" {
+' type "azerty" ou "querty"
+ TypeClavier type
+ touches
+}
+
+clavier - "1" Type
+
+class propriétaire as "Proprietaire" {
+ nom
+ prenom
+}
+portable "1..*" -- "0..*" propriétaire
+clavier "1" --* " " portable
+@enduml
